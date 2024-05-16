@@ -1,0 +1,201 @@
+.modal {
+    position: fixed;
+    margin: auto;
+    width: 415px;
+    height: 555px;
+    display: none;
+    transform: translate3d(0%, 0, 0);
+    border-radius: 50px;
+    top: 80px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 15px 24px -15px #000000a1;
+    right: 10px;
+}
+
+.modal-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    margin-top: 8px;
+}
+
+.modal-button-back {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+.modal-header {
+    height: 20px;
+    display: grid;
+    justify-content: flex-end;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+}
+
+.modal-header-web-view {
+    height: 20px;
+    display: grid;
+    position: absolute;
+    z-index: 100;
+    top: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 22px;
+    height: 110px;
+}
+
+.button-line {
+    width: 30px;
+    height: 1px;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1536px) {
+    .modal {
+        width: 350px;
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .modal {
+        width: 350px;
+        height: 450px;
+    }
+
+    .modal-button {
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio:0) {
+    .modal {
+        width: 300px;
+        height: 389px;
+    }
+
+    .modal-button {
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modal {
+        width: 300px;
+        height: 392px;
+    }
+
+    .modal-button {
+        margin-top: 5px;
+    }
+
+    .modal-header {
+        margin-right: 0;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .modal {
+        width: 75%;
+        height: 388px;
+        left: 15px;
+    }
+
+    .modal-button {
+        margin-top: 5px;
+    }
+
+    .modal-header {
+        margin-right: 0;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 635px) {
+    .modal {
+        width: 50%;
+        height: 388px;
+        left: 15px;
+    }
+
+    .modal-button {
+        margin-top: 5px;
+    }
+
+    .modal-header {
+        margin-right: 0;
+        height: 30px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .modal {
+        width: 55%;
+        height: 388px;
+        left: 15px;
+    }
+
+    .modal-button {
+        margin-top: 5px;
+    }
+
+    .modal-header {
+        margin-right: 0;
+        height: 30px;
+    }
+}
+
+
+@media screen and (max-width: 475px) {
+    .modal {
+        width: 79%;
+        height: 388px;
+        left: 15px;
+    }
+
+    .modal-button {
+        margin-top: 5px;
+    }
+
+    .modal-header {
+        margin-right: 0;
+        height: 30px;
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 4) {
+    .modal {
+        width: 80%;
+        height: 388px;
+        left: 10px;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .modal {
+        width: 90%;
+        height: 388px;
+        left: 10px;
+    }
+
+    .modal-button {
+        margin-top: 5px;
+    }
+
+    .modal-header {
+        margin-right: 0;
+        height: 30px;
+    }
+}

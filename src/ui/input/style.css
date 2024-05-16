@@ -1,0 +1,117 @@
+.form-group {
+    display: grid;
+    place-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.error-field {
+    display: block;
+    color: #D96A6A;
+    font-size: 11px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.unit {
+    position: absolute;
+    display: block;
+    right: 10px;
+    top: 17px;
+    z-index: 9;
+    font-size: 20px;
+    color: white;
+    border-width: 500;
+}
+
+
+/* @media */
+@media screen and (max-width: 1536px) {
+    .error-field {
+        font-size: 12px;
+    }
+
+    .unit {
+        top: 10px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .error-field {
+        font-size: 12px;
+    }
+
+    .unit {
+        top: 10px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio:0) {
+    .error-field {
+        font-size: 12px;
+    }
+
+    .unit {
+        top: 10px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .error-field {
+        font-size: 12px;
+    }
+
+    .unit {
+        top: 10px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .error-field {
+        font-size: 12px;
+    }
+
+    .unit {
+        top: 10px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 635px) {
+    .error-field {
+        font-size: 12px;
+    }
+
+    .unit {
+        top: 10px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .error-field {
+        font-size: 12px;
+    }
+
+    .unit {
+        top: 10px;
+        font-size: 15px;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .error-field {
+        font-size: 12px;
+    }
+
+    .unit {
+        top: 10px;
+        font-size: 15px;
+    }
+}
