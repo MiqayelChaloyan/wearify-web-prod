@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 52%;
+    margin-top: 50%;
 }
 
 .img {
@@ -26,42 +26,50 @@
 
 @media screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio:0) {
     .img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
 }
 
 @media screen and (max-width: 640px) {
     .img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
 }
 
 @media screen and (max-width: 635px) {
     .img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .container-splash {
+        margin-top: 50%;
     }
 }
 
 @media screen and (max-width: 475px) {
     .img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .container-splash {
+        margin-top: 50%;
     }
 }
 
 @media screen and (max-width: 320px) {
     .img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
 }

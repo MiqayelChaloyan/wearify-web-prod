@@ -61,7 +61,7 @@ export default function UserForm({
 
         if (item?.is_closet) {
             const genderParams = isFemale ? bodyTypes.female : bodyTypes.male;
-            url += `?&avatar_info=${genderParams.gender}_${genderParams.skinType}_${height}_${weight}_${genderParams.shapeType.RECTANGLE}`;
+            url += `?&avatar_info=${genderParams.gender}_${genderParams.skinType}_${height}_${weight}_${genderParams.shapeType.TRIANGLE}`;
         }
 
         dispatch(addData({ ...values, url, isCloset: item?.is_closet }));

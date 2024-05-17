@@ -5,6 +5,10 @@ import './styles.css';
 export default function WebView() {
     const state = useSelector((state) => state.state);
 
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     document.getElementsByClassName('e1p0l5j40').style.display = 'none';
+    // });
+    
     return (
         <iframe
             title='webview'

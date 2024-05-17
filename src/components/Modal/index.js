@@ -2,6 +2,7 @@ import useTheme from 'hooks/useTheme';
 
 import { IoClose } from 'react-icons/io5';
 import { IoMdArrowRoundBack } from 'react-icons/io';
+import { BsFillCameraFill } from "react-icons/bs";
 
 import './styles.css';
 
@@ -46,9 +47,15 @@ export default function Modal({
                                     >
                                         <IoMdArrowRoundBack />
                                     </button>
+                                    <div className='button-line' />
+                                    <button
+                                        className='modal-button-back'
+                                    >
+                                        <BsFillCameraFill color='white' />
+                                    </button>
                                 </>
                             )}
-                        </div> 
+                        </div>
                     }
                     {children}
                 </div>
