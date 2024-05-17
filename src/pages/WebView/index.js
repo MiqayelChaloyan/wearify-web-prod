@@ -12,8 +12,8 @@ export default function WebView() {
     return (
         <iframe
             title='webview'
-            src={state?.url}
-            // src='https://style.clo-set.com/fitting/sO15%2B%2F0YITvl0q9vrefpDQ%3D%3D?avatar_info=1_131338e96683431eb6c6e3267b94ce6f_160_40_0'
+            // src={state?.url}
+            src='https://style.clo-set.com/fitting/sO15%2B%2F0YITvl0q9vrefpDQ%3D%3D?avatar_info=1_131338e96683431eb6c6e3267b94ce6f_160_40_0'
             className='iframe'
         />
     );
