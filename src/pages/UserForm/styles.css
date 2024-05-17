@@ -1,5 +1,5 @@
 .step-form {
-    margin-top: 7%;
+    padding-top: 12%;
 }
 
 .title {
@@ -131,6 +131,10 @@
 @media screen and (max-width: 1280px) {
     .title {
         font-size: 19px;
+    }
+
+    .button-next {
+        margin: 0 auto;
     }
 }
 

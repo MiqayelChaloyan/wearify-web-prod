@@ -5,6 +5,7 @@ import { IoMdArrowRoundBack } from 'react-icons/io';
 
 import './styles.css';
 
+
 export default function Modal({
     children,
     currentStepIndex,
@@ -47,7 +48,7 @@ export default function Modal({
                                     </button>
                                 </>
                             )}
-                        </div>
+                        </div> 
                     }
                     {children}
                 </div>

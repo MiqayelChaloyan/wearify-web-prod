@@ -8,4 +8,4 @@ In the project directory, you can run:
 
 ### `npm start`
 
-WEARIFY AI WEB MODAL
+### `WEARIFY AI WEB MODAL`

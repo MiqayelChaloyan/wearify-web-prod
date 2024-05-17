@@ -5,19 +5,12 @@ import './styles.css';
 export default function WebView() {
     const state = useSelector((state) => state.state);
 
-    // const nextElement = document.getElementById('__next');
-
-    // if (nextElement) {
-    //     console.log('Element found:', nextElement);
-    //     nextElement.textContent = 'Hello, World!';
-    // } else {
-    //     console.error('Element with ID "__next" not found.');
-    // }
-
-    return <iframe
-        title='webview'
-        src={state?.url}
-        // src='https://style.clo-set.com/fitting/sO15%2B%2F0YITvl0q9vrefpDQ%3D%3D?avatar_info=1_131338e96683431eb6c6e3267b94ce6f_160_40_0'
-        className='iframe'
-    />;
+    return (
+        <iframe
+            title='webview'
+            src={state?.url}
+            // src='https://style.clo-set.com/fitting/sO15%2B%2F0YITvl0q9vrefpDQ%3D%3D?avatar_info=1_131338e96683431eb6c6e3267b94ce6f_160_40_0'
+            className='iframe'
+        />
+    );
 };
