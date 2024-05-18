@@ -1,7 +1,7 @@
 .iframe {
     width: 415px;
     height: 555px;
-    border-radius: 50px;
+    border-radius: 48px;
 }
 
 @media screen and (max-width: 1536px) {

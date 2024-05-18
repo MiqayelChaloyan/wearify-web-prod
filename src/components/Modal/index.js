@@ -1,8 +1,4 @@
-import React, { useRef } from 'react';
-
-// import * as htmlToImage from 'html-to-image';
-
-// import { createFileName, useScreenshot } from 'use-react-screenshot';
+import React, { useRef, useState } from 'react';
 
 import useTheme from 'hooks/useTheme';
 
@@ -12,7 +8,14 @@ import { BsFillCameraFill } from 'react-icons/bs';
 
 import './styles.css';
 
+// Variant - 1
+// import * as htmlToImage from 'html-to-image';
+// import { createFileName, useScreenshot } from 'use-react-screenshot';
+
+// Variant - 2
 // import html2canvas from 'html2canvas';
+// Variant - 3
+import ReactToPrint from 'react-to-print';
 
 
 export default function Modal({
@@ -25,14 +28,17 @@ export default function Modal({
     const buttonHeadStyles = currentStepIndex !== 2 ? { right: 0 } : { left: '20px' };
     const buttonStyles = { color: '#FFFFFF' };
     const classNameButtons = currentStepIndex !== 2 ? 'modal-header' : 'modal-header-web-view';
-    // const ref = useRef(null);
 
     const handleClose = () => document.getElementById('modal-viewer').style.display = 'none';
 
 
-    // Screnshot
-    // Variant -1
-    // const [image, takeScreenshot] = useScreenshot();
+    // Screnshots
+    // Variant -1   
+    // const ref = useRef(null);
+    // const [image, takeScreenshot] = useScreenshot({
+    //     type: 'image/jpeg',
+    //     quality: 1.0
+    // });
 
     // const takeScreenShot = async (node) => {
     //     const dataURI = await htmlToImage.toJpeg(node);
@@ -49,22 +55,31 @@ export default function Modal({
     // const downloadScreenshot = () => takeScreenShot(ref.current).then(download);
 
     // Variant - 2
-    // const captureScreenshot = () => {
-    //     let canvasPromise = html2canvas(ref.current, {
-    //         useCORS: true // in case you have images stored in your application
+    // const screenRef = useRef();
+
+    // const takeScreenshot = () => {
+    //   html2canvas(screenRef.current, { useCORS: true, logging: true })
+    //     .then((canvas) => {
+    //       const imgData = canvas.toDataURL('image/png');
+    //       const link = document.createElement('a');
+    //       link.href = imgData;
+    //       link.download = 'screenshot.png';
+    //       link.click();
+    //     })
+    //     .catch((err) => {
+    //       console.error('Screenshot error:', err);
     //     });
-    //     canvasPromise.then((canvas) => {
-    //         document.body.appendChild(canvas);
-    //     });
-    // }
+    // };
+    // Variant - 3
+    const componentRef = useRef();
     /////////////////////////////
 
     return (
         <div
             id='modal-viewer'
-            className="modal"
+            className='modal'
             style={styles}
-            // ref={ref}
+            ref={componentRef}
         >
             <div className='modal-dialog' role='document'>
                 <div className='modal-content'>
@@ -77,25 +92,34 @@ export default function Modal({
                             >
                                 <IoClose />
                             </button>
-                            {currentStepIndex === 2 && (
-                            <>
-                                <div className='button-line' />
-                                <button
-                                    onClick={_handleBack}
-                                    className='modal-button-back'
-                                    style={buttonStyles}
-                                >
-                                    <IoMdArrowRoundBack />
-                                </button>
-                                <div className='button-line' />
-                                <button
-                                    // onClick={captureScreenshot}
+                            {/* {currentStepIndex === 2 && ( */}
+                                <>
+                                    <div className='button-line' />
+                                    <button
+                                        onClick={_handleBack}
+                                        className='modal-button-back'
+                                        style={buttonStyles}
+                                    >
+                                        <IoMdArrowRoundBack />
+                                    </button>
+                                    <div className='button-line' />
+                                    {/* <button
+                                    // onClick={handleSave}
                                     className='camera-button'
                                 >
                                     <BsFillCameraFill color='white' />
-                                </button>
-                            </>
-                            )} 
+                                </button> */}
+                                    <ReactToPrint
+                                        trigger={() =>
+                                            <button
+                                                className='camera-button'
+                                            >
+                                                <BsFillCameraFill color='white' />
+                                            </button>}
+                                        content={() => componentRef.current}
+                                    />
+                                </>
+                            {/* )} */}
                         </div>
                     }
                     {children}
