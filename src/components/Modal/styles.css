@@ -50,6 +50,12 @@
     top: 0;
 }
 
+.loading-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .modal-header-web-view {
     height: 20px;
     display: grid;

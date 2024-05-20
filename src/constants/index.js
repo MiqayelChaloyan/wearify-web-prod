@@ -11,7 +11,7 @@ const GeneralTexts = {
 };
 
 const StatusTexts = {
-    loading: 'Your avatar is loading ...',
+    loading: 'Your avatar is loading',
     error: 'Something went wrong, Please try again.'
 }
 

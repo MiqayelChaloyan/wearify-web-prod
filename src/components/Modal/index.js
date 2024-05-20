@@ -13,6 +13,8 @@ import { IoClose } from 'react-icons/io5';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { BsFillCameraFill } from 'react-icons/bs';
 
+import { Oval, ThreeDots } from 'react-loading-icons';
+
 import FinalResult from 'pages/FinalResult';
 
 import { colors, StatusTexts } from 'constants';
@@ -86,7 +88,7 @@ export default function Modal({
             <div className='modal-dialog' role='document'>
                 <div className='modal-content'>
                     {currentStepIndex !== 0 &&
-                        <div className={!showFinal  ? classNameButtons : classNameFinalBtn} style={buttonHeadStyles}>
+                        <div className={!showFinal ? classNameButtons : classNameFinalBtn} style={buttonHeadStyles}>
                             <button
                                 onClick={handleClose}
                                 className='modal-button'
@@ -103,7 +105,7 @@ export default function Modal({
                                         style={buttonStyles}
                                         disabled={isLoading || isAvatarError}
                                     >
-                                        <IoMdArrowRoundBack color={isAvatarError || isLoading ? '#0C0D34' : 'white'}/>
+                                        {isLoading ? <Oval width={30} height={50} /> : <IoMdArrowRoundBack color='white' />}
                                     </button>
                                     <div className='button-line' />
                                     <button
@@ -116,7 +118,11 @@ export default function Modal({
                             )}
                         </div>
                     }
-                    {isLoading && <h2 className='loading-avatar'>{StatusTexts.loading}</h2>}
+                    {isLoading &&
+                        <div className='loading-content'>
+                            <h2 className='loading-avatar'>{StatusTexts.loading}</h2>
+                            <ThreeDots width={20} />
+                        </div>}
                     {isAvatarError && <h2 className='avatar-error'>{StatusTexts.error}</h2>}
                     {showFinal ? <FinalResult /> : children}
                 </div>
