@@ -47,7 +47,6 @@ export default function UserForm({
 
 
     const _submitForm = async (values, actions) => {
-
         actions.setSubmitting(false);
 
         const { height, weight } = values;
