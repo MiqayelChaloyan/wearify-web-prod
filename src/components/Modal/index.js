@@ -40,11 +40,10 @@ export default function Modal({
 
     const styles = { backgroundColor: theme };
     const buttonHeadStyles = currentStepIndex !== 2 ? { right: 0 } : { left: '20px' };
-    const buttonStyles = { color: '#FFFFFF' };
+    const buttonStyles = { color: colors.white };
 
     const classNameButtons = currentStepIndex !== 2 ? 'modal-header' : `modal-header-web-view ${isLoading || isAvatarError ? 'top' : ''}`;
     const classNameFinalBtn = 'modal-header-small-view';
-
 
     const handleClose = () => document.getElementById('modal-viewer').style.display = 'none';
 
@@ -77,7 +76,11 @@ export default function Modal({
                 }
             });
         }
-    }, [userId])
+    }, [userId]);
+
+    // const root = document.getElementById('modal-viewer');
+    // console.log(root.productId)
+    // console.log(root.gender)
 
     return (
         <div
@@ -105,14 +108,14 @@ export default function Modal({
                                         style={buttonStyles}
                                         disabled={isLoading || isAvatarError}
                                     >
-                                        {isLoading ? <Oval width={30} height={50} /> : <IoMdArrowRoundBack color='white' />}
+                                        {isLoading ? <Oval width={30} height={50} /> : <IoMdArrowRoundBack color={colors.white} />}
                                     </button>
                                     <div className='button-line' />
                                     <button
                                         onClick={handleSubmitCamera}
                                         className='camera-button'
                                     >
-                                        <BsFillCameraFill color='white' />
+                                        <BsFillCameraFill color={colors.white} />
                                     </button>
                                 </>
                             )}

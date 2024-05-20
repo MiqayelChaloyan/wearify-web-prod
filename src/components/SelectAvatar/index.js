@@ -9,6 +9,7 @@ import { setUserId } from 'store/features/UserId';
 
 import { ref, set } from 'firebase/database';
 import { database, storage } from 'firebaseDatabase';
+import { uploadBytes, ref as sRef } from 'firebase/storage';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,7 +19,7 @@ import avatars from 'constants/avatars';
 import { GeneralTexts, ButtonsTexts } from 'constants';
 
 import './styles.css';
-import { uploadBytes, ref as sRef } from 'firebase/storage';
+
 
 const SelectAvatar = () => {
     const [isActive, setIsActive] = useState(avatars[0].id);
@@ -29,7 +30,8 @@ const SelectAvatar = () => {
 
     const handleSelectAvatar = (id) => setIsActive(id);
 
-    const handleNext = () => {
+
+    const handleNext = async () => {
         hadnleClose();
         dispatch(updatedAvatarLoadingStatus(true));
         dispatch(updatedAvatarErrorStatus(false));
@@ -37,16 +39,20 @@ const SelectAvatar = () => {
         dispatch(setUserId(userId));
 
         const result = avatars.filter((elem => elem.id === isActive));
-        const { link } = result[0];
+        const { link, presetModel} = result[0];
 
-        ////
-        const storageRef = sRef(storage, `WEB/${userId}/avatar_${userId}.png`);
+        try {
+            const response = await fetch(link);
+            const blob = await response.blob();
+            const newFile = new File([blob], 'example.png', { type: blob.type });
 
-        uploadBytes(storageRef, link).then((snapshot) => {
-            console.log('Uploaded a blob or file!');
-        });
+            const storageRef = sRef(storage, `WEB/${userId}/avatar_${userId}.png`);
 
-        /////
+            uploadBytes(storageRef, newFile);
+        } catch (_) {
+            console.log('File upload error', _)
+        }
+
         set(ref(database, 'avatars/' + userId), {
             isLoading: true,
             isAvatarError: false,
@@ -58,7 +64,7 @@ const SelectAvatar = () => {
             closetURL: url,
             status: 'new',
             presetBackground: '033',
-            presetModel: '004'
+            presetModel,
         }).catch(err => console.log(err))
     };
 

@@ -1,8 +1,11 @@
 import logoUrl from 'assets/images/logo.png';
-import avatarURL from 'assets/images/avatar.png';
+import avatar1URL from 'assets/images/karine.png';
+import avatar2URL from 'assets/images/milena.png';
+import avatar3URL from 'assets/images/nazeli.png';
 
 const colors = {
-    darkBlue: '#0C0D34'
+    darkBlue: '#0C0D34',
+    white: '#FFFFFF',
 };
 
 const GeneralTexts = {
@@ -33,5 +36,7 @@ export {
     ButtonsTexts,
     InputsTitles,
     StatusTexts,
-    avatarURL
+    avatar1URL,
+    avatar2URL,
+    avatar3URL,
 };

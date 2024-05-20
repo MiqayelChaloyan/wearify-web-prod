@@ -1,21 +1,25 @@
-import { avatarURL } from "constants";
+import { avatar1URL, avatar2URL, avatar3URL } from "constants";
 
 const avatars = [
     {
         id: 1,
-        link: avatarURL
+        link: avatar1URL,
+        presetModel: '066'
     },
     {
         id: 2,
-        link: avatarURL
+        link: avatar2URL,
+        presetModel: '065'
     },
     {
         id: 3,
-        link: avatarURL
+        link: avatar3URL,
+        presetModel: '002'
     },
     {
         id: 4,
-        link: avatarURL
+        link: 'https://drive.google.com/thumbnail?id=1Z1cpmOWbLS0nUJZtK7o8SNKbLpzmhxgV',
+        presetModel: '004'
     }
 ];
 
