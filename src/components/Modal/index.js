@@ -101,8 +101,9 @@ export default function Modal({
                                         onClick={_handleBack}
                                         className='modal-button-back'
                                         style={buttonStyles}
+                                        disabled={isLoading || isAvatarError}
                                     >
-                                        <IoMdArrowRoundBack />
+                                        <IoMdArrowRoundBack color={isAvatarError || isLoading ? '#0C0D34' : 'white'}/>
                                     </button>
                                     <div className='button-line' />
                                     <button
