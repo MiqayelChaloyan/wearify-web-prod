@@ -1,17 +1,18 @@
 .avatar-flow {
-    margin: 60px auto;
+    margin: 40px auto;
 }
 
 .final-avatar {
     width: 100%;
-    height: 500px;
-    border-radius: 50px
+    height: 520px;
+    border-radius: 50px;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 1536px){
     .final-avatar {
         width: 100%;
-        height: 450px;
+        height: 470px;
         border-radius: 50px
     }   
 }
