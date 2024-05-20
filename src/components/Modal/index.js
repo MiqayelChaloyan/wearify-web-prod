@@ -39,7 +39,7 @@ export default function Modal({
     const { userId } = useSelector((state) => state);
 
     const styles = { backgroundColor: theme };
-    const buttonHeadStyles = currentStepIndex !== 2 || currentStepIndex !== 3  ? { right: 0 } : { left: '20px' };
+    const buttonHeadStyles = currentStepIndex === 1  ? { right: 0 } : { left: '20px' };
     const buttonStyles = { color: colors.white };
 
     const classNameButtons = currentStepIndex !== 2 ? 'modal-header' : `modal-header-web-view ${isLoading || isAvatarError ? 'top' : ''}`;
