@@ -8,7 +8,7 @@ import { updatedAvatarErrorStatus } from 'store/features/AvatarError';
 import { setUserId } from 'store/features/UserId';
 
 import { ref, set } from 'firebase/database';
-import { database } from 'firebaseDatabase';
+import { database, storage } from 'firebaseDatabase';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,7 +18,7 @@ import avatars from 'constants/avatars';
 import { GeneralTexts, ButtonsTexts } from 'constants';
 
 import './styles.css';
-
+import { uploadBytes, ref as sRef } from 'firebase/storage';
 
 const SelectAvatar = () => {
     const [isActive, setIsActive] = useState(avatars[0].id);
@@ -39,6 +39,14 @@ const SelectAvatar = () => {
         const result = avatars.filter((elem => elem.id === isActive));
         const { link } = result[0];
 
+        ////
+        const storageRef = sRef(storage, `WEB/${userId}/avatar_${userId}.png`);
+
+        uploadBytes(storageRef, link).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+        });
+
+        /////
         set(ref(database, 'avatars/' + userId), {
             isLoading: true,
             isAvatarError: false,
@@ -48,7 +56,9 @@ const SelectAvatar = () => {
         set(ref(database, 'new/' + userId), {
             avatarURL: link,
             closetURL: url,
-            status: 'new'
+            status: 'new',
+            presetBackground: '033',
+            presetModel: '004'
         }).catch(err => console.log(err))
     };
 

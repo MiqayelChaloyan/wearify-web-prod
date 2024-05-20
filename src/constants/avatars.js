@@ -1,19 +1,21 @@
+import { avatarURL } from "constants";
+
 const avatars = [
     {
         id: 1,
-        link: 'https://drive.google.com/thumbnail?id=1Z1cpmOWbLS0nUJZtK7o8SNKbLpzmhxgV'
+        link: avatarURL
     },
     {
         id: 2,
-        link: 'https://drive.google.com/thumbnail?id=1Z1cpmOWbLS0nUJZtK7o8SNKbLpzmhxgV'
+        link: avatarURL
     },
     {
         id: 3,
-        link: 'https://drive.google.com/thumbnail?id=1Z1cpmOWbLS0nUJZtK7o8SNKbLpzmhxgV'
+        link: avatarURL
     },
     {
         id: 4,
-        link: 'https://drive.google.com/thumbnail?id=1Z1cpmOWbLS0nUJZtK7o8SNKbLpzmhxgV'
+        link: avatarURL
     }
 ];
 

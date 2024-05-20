@@ -1,4 +1,5 @@
 import logoUrl from 'assets/images/logo.png';
+import avatarURL from 'assets/images/avatar.png';
 
 const colors = {
     darkBlue: '#0C0D34'
@@ -31,5 +32,6 @@ export {
     GeneralTexts,
     ButtonsTexts,
     InputsTitles,
-    StatusTexts
+    StatusTexts,
+    avatarURL
 };
