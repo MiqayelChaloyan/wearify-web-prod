@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addData } from 'store/features/MeasurementsSlice';
 
 import { Form, Formik } from 'formik';
@@ -40,7 +40,6 @@ export default function UserForm({
         isCentimeter,
         isKilogram
     } = formField;
-
     const [isCentimeterBool, setIsCentimeterBool] = useState(true);
     const [isKilogramBool, setIsKilogramBool] = useState(true);
 
@@ -61,7 +60,7 @@ export default function UserForm({
 
         if (item?.is_closet) {
             const genderParams = isFemale ? bodyTypes.female : bodyTypes.male;
-            url += `?&avatar_info=${genderParams.gender}_${genderParams.skinType}_${height}_${weight}_${genderParams.shapeType.TRIANGLE}`;
+            url += `?&avatar_info=${genderParams.gender}_${genderParams.skinType}_${height}_${weight}_${genderParams.shapeType.TRIANGLE}&ui_capture=false&ui_logo=false&ui_like=false&ui_shopping_bag=false`;
         }
 
         dispatch(addData({ ...values, url, isCloset: item?.is_closet }));

@@ -1,4 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { updatedModalStatus } from 'store/features/ModalSwitch';
+import { updatedAvatarErrorStatus } from 'store/features/AvatarError';
+import { updatedAvatarLoadingStatus } from 'store/features/AvatarLoading';
+
+import { getDatabase, onValue, ref } from 'firebase/database';
 
 import useTheme from 'hooks/useTheme';
 
@@ -6,16 +13,11 @@ import { IoClose } from 'react-icons/io5';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { BsFillCameraFill } from 'react-icons/bs';
 
+import FinalResult from 'pages/FinalResult';
+
+import { colors, StatusTexts } from 'constants';
+
 import './styles.css';
-
-// Variant - 1
-// import * as htmlToImage from 'html-to-image';
-// import { createFileName, useScreenshot } from 'use-react-screenshot';
-
-// Variant - 2
-// import html2canvas from 'html2canvas';
-// Variant - 3
-import ReactToPrint from 'react-to-print';
 
 
 export default function Modal({
@@ -24,67 +26,67 @@ export default function Modal({
     _handleBack
 }) {
     const { theme } = useTheme();
+
+    const { isLoading } = useSelector((state) => state.isAvatarLoading);
+    const { isAvatarError } = useSelector((state) => state.avatarError);
+    const [showFinal, setShowFinal] = useState(false);
+
+    const dispatch = useDispatch();
+    const { setTheme } = useTheme();
+
+    const { userId } = useSelector((state) => state);
+
     const styles = { backgroundColor: theme };
     const buttonHeadStyles = currentStepIndex !== 2 ? { right: 0 } : { left: '20px' };
     const buttonStyles = { color: '#FFFFFF' };
-    const classNameButtons = currentStepIndex !== 2 ? 'modal-header' : 'modal-header-web-view';
+
+    const classNameButtons = currentStepIndex !== 2 ? 'modal-header' : `modal-header-web-view ${isLoading || isAvatarError ? 'top' : ''}`;
+    const classNameFinalBtn = 'modal-header-small-view';
+
 
     const handleClose = () => document.getElementById('modal-viewer').style.display = 'none';
 
+    const handleSubmitCamera = () => dispatch(updatedModalStatus());
 
-    // Screnshots
-    // Variant -1   
-    // const ref = useRef(null);
-    // const [image, takeScreenshot] = useScreenshot({
-    //     type: 'image/jpeg',
-    //     quality: 1.0
-    // });
+    useEffect(() => {
+        if (userId) {
+            const db = getDatabase();
 
-    // const takeScreenShot = async (node) => {
-    //     const dataURI = await htmlToImage.toJpeg(node);
-    //     return dataURI;
-    // };
+            const starCountRef = ref(db, 'avatars/' + userId.userId);
+            onValue(starCountRef, (snapshot) => {
+                const data = snapshot.val();
+                if (!data?.isLoading) {
+                    dispatch(updatedAvatarLoadingStatus(false));
+                    dispatch(updatedAvatarErrorStatus(false));
 
-    // const download = (image, { name = "img", extension = "jpg" } = {}) => {
-    //     const a = document.createElement("a");
-    //     a.href = image;
-    //     a.download = createFileName(extension, name);
-    //     a.click();
-    // };
+                    setTheme(colors.darkBlue)
+                    setShowFinal(true);
+                } else {
+                    dispatch(updatedAvatarLoadingStatus(true));
+                    dispatch(updatedAvatarErrorStatus(false));
 
-    // const downloadScreenshot = () => takeScreenShot(ref.current).then(download);
+                    setTheme(colors.darkBlue);
+                }
+                if (data?.isAvatarError) {
+                    dispatch(updatedAvatarErrorStatus(true));
+                    dispatch(updatedAvatarLoadingStatus(false));
 
-    // Variant - 2
-    // const screenRef = useRef();
-
-    // const takeScreenshot = () => {
-    //   html2canvas(screenRef.current, { useCORS: true, logging: true })
-    //     .then((canvas) => {
-    //       const imgData = canvas.toDataURL('image/png');
-    //       const link = document.createElement('a');
-    //       link.href = imgData;
-    //       link.download = 'screenshot.png';
-    //       link.click();
-    //     })
-    //     .catch((err) => {
-    //       console.error('Screenshot error:', err);
-    //     });
-    // };
-    // Variant - 3
-    const componentRef = useRef();
-    /////////////////////////////
+                    setTheme('#ffcc00')
+                }
+            });
+        }
+    }, [userId])
 
     return (
         <div
             id='modal-viewer'
             className='modal'
             style={styles}
-            ref={componentRef}
         >
             <div className='modal-dialog' role='document'>
                 <div className='modal-content'>
                     {currentStepIndex !== 0 &&
-                        <div className={classNameButtons} style={buttonHeadStyles}>
+                        <div className={!showFinal  ? classNameButtons : classNameFinalBtn} style={buttonHeadStyles}>
                             <button
                                 onClick={handleClose}
                                 className='modal-button'
@@ -92,7 +94,7 @@ export default function Modal({
                             >
                                 <IoClose />
                             </button>
-                            {/* {currentStepIndex === 2 && ( */}
+                            {currentStepIndex === 2 && !showFinal && (
                                 <>
                                     <div className='button-line' />
                                     <button
@@ -103,26 +105,19 @@ export default function Modal({
                                         <IoMdArrowRoundBack />
                                     </button>
                                     <div className='button-line' />
-                                    {/* <button
-                                    // onClick={handleSave}
-                                    className='camera-button'
-                                >
-                                    <BsFillCameraFill color='white' />
-                                </button> */}
-                                    <ReactToPrint
-                                        trigger={() =>
-                                            <button
-                                                className='camera-button'
-                                            >
-                                                <BsFillCameraFill color='white' />
-                                            </button>}
-                                        content={() => componentRef.current}
-                                    />
+                                    <button
+                                        onClick={handleSubmitCamera}
+                                        className='camera-button'
+                                    >
+                                        <BsFillCameraFill color='white' />
+                                    </button>
                                 </>
-                            {/* )} */}
+                            )}
                         </div>
                     }
-                    {children}
+                    {isLoading && <h2 className='loading-avatar'>{StatusTexts.loading}</h2>}
+                    {isAvatarError && <h2 className='avatar-error'>{StatusTexts.error}</h2>}
+                    {showFinal ? <FinalResult /> : children}
                 </div>
             </div>
         </div>

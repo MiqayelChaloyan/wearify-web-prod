@@ -11,14 +11,13 @@ import WebView from 'pages/WebView';
 
 
 export default function Layout() {
-
     const handleNext = () => next();
 
     const { currentStepIndex, step, back, next } =
         useMultistepForm([
             <SplashScreen />,
             <UserForm next={handleNext} />,
-            <WebView />
+            <WebView />,
         ]);
 
     useEffect(() => {

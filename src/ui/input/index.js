@@ -2,10 +2,12 @@ import { useField } from 'formik';
 import { at } from 'lodash';
 
 import './style.css';
+// import { useSelector } from 'react-redux';
 
 const InputField = (props) => {
     const { errorText, unit, ...rest } = props;
     const [field, meta] = useField(props);
+    // const { height, weight } = useSelector((state) => state.state);
 
     function _renderHelperText() {
         const [touched, error] = at(meta, 'touched', 'error');

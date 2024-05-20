@@ -7,7 +7,13 @@ const colors = {
 const GeneralTexts = {
     formTitle: 'Your Measurements',
     formHeaderText: 'To ensure the perfect fit, please enter your body measurements.',
+    selectAvatarText: 'Please Select Avatar'
 };
+
+const StatusTexts = {
+    loading: 'Your avatar is loading ...',
+    error: 'Something went wrong, Please try again.'
+}
 
 const InputsTitles = {
     height: 'Height',
@@ -16,6 +22,7 @@ const InputsTitles = {
 
 const ButtonsTexts = {
     send: 'Send',
+    next: 'Next'
 };
 
 export {
@@ -23,5 +30,6 @@ export {
     colors,
     GeneralTexts,
     ButtonsTexts,
-    InputsTitles
+    InputsTitles,
+    StatusTexts
 };
