@@ -1,4 +1,4 @@
-import { avatar1URL, avatar2URL, avatar3URL } from "constants";
+import { avatar1URL, avatar2URL, avatar3URL, avatar4URL } from "constants";
 
 const avatars = [
     {
@@ -18,7 +18,7 @@ const avatars = [
     },
     {
         id: 4,
-        link: 'https://drive.google.com/thumbnail?id=1Z1cpmOWbLS0nUJZtK7o8SNKbLpzmhxgV',
+        link: avatar4URL,
         presetModel: '004'
     }
 ];

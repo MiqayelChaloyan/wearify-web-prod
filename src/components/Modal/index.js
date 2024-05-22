@@ -45,7 +45,7 @@ export default function Modal({
     const classNameButtons = currentStepIndex !== 2 ? 'modal-header' : `modal-header-web-view ${isLoading || isAvatarError ? 'top' : ''}`;
     const classNameFinalBtn = 'modal-header';
 
-    const handleClose = () => document.getElementById('modal-viewer').style.display = 'none';
+    const handleClose = () => document.getElementById('web-modal').style.display = 'none';
 
     const handleSubmitCamera = () => dispatch(updatedModalStatus());
 
@@ -78,13 +78,9 @@ export default function Modal({
         }
     }, [userId]);
 
-    // const root = document.getElementById('modal-viewer');
-    // console.log(root.productId)
-    // console.log(root.gender)
-
     return (
         <div
-            id='modal-viewer'
+            id='web-modal'
             className='modal'
             style={styles}
         >

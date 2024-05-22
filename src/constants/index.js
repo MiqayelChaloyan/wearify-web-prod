@@ -1,7 +1,8 @@
 import logoUrl from 'assets/images/logo.png';
 import avatar1URL from 'assets/images/karine.png';
-import avatar2URL from 'assets/images/milena.png';
+import avatar2URL from 'assets/images/1.png';
 import avatar3URL from 'assets/images/nazeli.png';
+import avatar4URL from 'assets/images/2.png';
 
 const colors = {
     darkBlue: '#0C0D34',
@@ -39,4 +40,5 @@ export {
     avatar1URL,
     avatar2URL,
     avatar3URL,
+    avatar4URL
 };
